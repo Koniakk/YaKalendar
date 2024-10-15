@@ -12,24 +12,35 @@ using namespace std;
 
 
 
-class Day
-{
+class Day {
 public:
 	int id;
-	string title;
-	string description;
+	int momentDate; //chislo
+	string mark; //zametki
 
-	Day(int id, const string& title, const string& description)
-		: id(id), title(title), description(description) {}
+	Day(int id, int momentDate, const string& mark)
+		: id(id), momentDate(momentDate), mark(mark) {}
 
-	// Êîíñòðóêòîð êîïèðîâàíèÿ
+	// Конструктор копирования
 	Day(int id, const Day& other)
-		: id(id), title(other.title), description(other.description) {}
+		: id(id), momentDate(momentDate), mark(other.mark) {}
 
-	json toJson();
+	json toJson() const {
+		return json{
+			{"id",id},
+			{"momentDate", momentDate},
+			{"", mark}
+		};
+	}
 
-	static Day fromJson(const json& j);
+	static Day fromJson(const json& j) {
+		return Day(j["id"], j["momentDate"], j["mark"]);
+	}
 
-	string ToString();
+	string ToString() {
+		return to_string(id)
+			+ " " + to_string(momentDate)         
+			+ " " + mark;
+	}
 
 };
