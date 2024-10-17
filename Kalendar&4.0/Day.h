@@ -19,28 +19,16 @@ public:
 	string mark; //zametki
 
 	Day(int id, int momentDate, const string& mark)
-		: id(id), momentDate(momentDate), mark(mark) {}
+	: id(id), momentDate(momentDate), mark(mark) {}
 
 	// Конструктор копирования
 	Day(int id, const Day& other)
 		: id(id), momentDate(momentDate), mark(other.mark) {}
 
-	json toJson() const {
-		return json{
-			{"id",id},
-			{"momentDate", momentDate},
-			{"", mark}
-		};
-	}
+	json toJson();
 
-	static Day fromJson(const json& j) {
-		return Day(j["id"], j["momentDate"], j["mark"]);
-	}
+	static Day fromJson(const json& j);
 
-	string ToString() {
-		return to_string(id)
-			+ " " + to_string(momentDate)         
-			+ " " + mark;
-	}
+	string ToString();
 
 };
