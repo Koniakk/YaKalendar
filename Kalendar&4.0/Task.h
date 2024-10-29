@@ -1,4 +1,4 @@
-#ifandif DATASOURSE_H
+#ifndef DATASOURSE_H
 #define DATASOURSE_H
 #include <string>
 #include <vector>
@@ -22,7 +22,7 @@ public:
 	Task(int id, const string& title, const string& description)
 		: id(id), title(title), description(description) {}
 
-	// Конструктор копирования
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	Task(int id, const Task& other)
 		: id(id), title(other.title), description(other.description) {}
 
